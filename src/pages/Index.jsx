@@ -35,6 +35,11 @@ const Index = () => {
     return null;
   };
 
+  const restartGame = () => {
+    setBoard(Array(9).fill(null));
+    setIsXNext(true);
+  };
+
   const winner = calculateWinner(board);
   const status = winner
     ? `Winner: ${winner}`
@@ -60,6 +65,9 @@ const Index = () => {
           <div className="text-center mb-4">{status}</div>
           <div className="grid grid-cols-3 gap-2">
             {Array.from({ length: 9 }).map((_, index) => renderSquare(index))}
+          </div>
+        <div className="text-center mt-4">
+            <Button variant="outline" onClick={restartGame}>Restart Game</Button>
           </div>
         </CardContent>
       </Card>
